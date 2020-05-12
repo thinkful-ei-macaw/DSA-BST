@@ -46,18 +46,20 @@ function isBST(bst) {
 
   return false;
 
-  // if(!bst.left || !bst.right) {
-
-  // }
-  //   if (bst.left.value > bst.value) {
-  //     return false;
-  //   }
-  //   if (bst.right.value < bst.value) {
-  //     return false;
-  //   }
 }
 
-function thirdLarge(bst) {}
+function thirdLarge(bst, arr = new Array()) {
+
+
+  if (bst !== null) {
+    thirdLarge(bst.left, arr);
+    arr.push(bst.key);
+    thirdLarge(bst.right, arr);
+  }
+
+  return arr;
+
+}
 
 function main() {
   const BST = new BinarySearchTree();
@@ -69,7 +71,7 @@ function main() {
   BST.insert(2);
   BST.insert(5);
 
-  console.log(treeLarge(BST));
+  console.log(thirdLarge(BST));
 
   // console.log(BST);
 }
